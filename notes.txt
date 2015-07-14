@@ -40,3 +40,312 @@ Application root    /home/highslater/Programming/TwelveInTwelve/blog
 Environment development
 Database adapter    sqlite3
 Database schema version 0
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git init
+Initialized empty Git repository in /home/highslater/Programming/TwelveInTwelve/blog/.git/
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    .gitignore
+    .ruby-gemset
+    .ruby-version
+    Gemfile
+    Gemfile.lock
+    README.rdoc
+    Rakefile
+    app/
+    bin/
+    config.ru
+    config/
+    db/
+    lib/
+    log/
+    notes.txt
+    public/
+    test/
+    vendor/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git add .
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git commit -am "Initial Commit"
+[master (root-commit) cc962b0] Initial Commit
+ 59 files changed, 949 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .ruby-gemset
+ create mode 100644 .ruby-version
+ create mode 100644 Gemfile
+ create mode 100644 Gemfile.lock
+ create mode 100644 README.rdoc
+ create mode 100644 Rakefile
+ create mode 100644 app/assets/images/.keep
+ create mode 100644 app/assets/javascripts/application.js
+ create mode 100644 app/assets/stylesheets/application.css
+ create mode 100644 app/controllers/application_controller.rb
+ create mode 100644 app/controllers/concerns/.keep
+ create mode 100644 app/helpers/application_helper.rb
+ create mode 100644 app/mailers/.keep
+ create mode 100644 app/models/.keep
+ create mode 100644 app/models/concerns/.keep
+ create mode 100644 app/views/layouts/application.html.erb
+ create mode 100755 bin/bundle
+ create mode 100755 bin/rails
+ create mode 100755 bin/rake
+ create mode 100755 bin/spring
+ create mode 100644 config.ru
+ create mode 100644 config/application.rb
+ create mode 100644 config/boot.rb
+ create mode 100644 config/database.yml
+ create mode 100644 config/environment.rb
+ create mode 100644 config/environments/development.rb
+ create mode 100644 config/environments/production.rb
+ create mode 100644 config/environments/test.rb
+ create mode 100644 config/initializers/assets.rb
+ create mode 100644 config/initializers/backtrace_silencers.rb
+ create mode 100644 config/initializers/cookies_serializer.rb
+ create mode 100644 config/initializers/filter_parameter_logging.rb
+ create mode 100644 config/initializers/inflections.rb
+ create mode 100644 config/initializers/mime_types.rb
+ create mode 100644 config/initializers/session_store.rb
+ create mode 100644 config/initializers/wrap_parameters.rb
+ create mode 100644 config/locales/en.yml
+ create mode 100644 config/routes.rb
+ create mode 100644 config/secrets.yml
+ create mode 100644 db/seeds.rb
+ create mode 100644 lib/assets/.keep
+ create mode 100644 lib/tasks/.keep
+ create mode 100644 log/.keep
+ create mode 100644 notes.txt
+ create mode 100644 public/404.html
+ create mode 100644 public/422.html
+ create mode 100644 public/500.html
+ create mode 100644 public/favicon.ico
+ create mode 100644 public/robots.txt
+ create mode 100644 test/controllers/.keep
+ create mode 100644 test/fixtures/.keep
+ create mode 100644 test/helpers/.keep
+ create mode 100644 test/integration/.keep
+ create mode 100644 test/mailers/.keep
+ create mode 100644 test/models/.keep
+ create mode 100644 test/test_helper.rb
+ create mode 100644 vendor/assets/javascripts/.keep
+ create mode 100644 vendor/assets/stylesheets/.keep
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git remote add origin git@github.com:highslater/blog.git
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git push -u origin master
+Counting objects: 66, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (53/53), done.
+Writing objects: 100% (66/66), 16.13 KiB | 0 bytes/s, done.
+Total 66 (delta 2), reused 0 (delta 0)
+To git@github.com:highslater/blog.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ 
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git log
+commit cc962b08e0715126be7f77f2dd19646577be3744
+Author: highslater <highslater@hotmail.com>
+Date:   Tue Jul 14 12:35:53 2015 -0400
+
+    Initial Commit
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ 
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ rails generate controller posts
+      create  app/controllers/posts_controller.rb
+      invoke  erb
+      create    app/views/posts
+      invoke  test_unit
+      create    test/controllers/posts_controller_test.rb
+      invoke  helper
+      create    app/helpers/posts_helper.rb
+      invoke    test_unit
+      create      test/helpers/posts_helper_test.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/posts.js.coffee
+      invoke    scss
+      create      app/assets/stylesheets/posts.css.scss
+
+Rails.application.routes.draw do
+  resources :posts
+  root "posts#index"
+end
+
+class PostsController < ApplicationController
+    def index
+    end
+end
+
+Template is missing
+Missing template posts/index, application/index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in: * "/home/highslater/Programming/TwelveInTwelve/blog/app/views"
+
+<h1>This is the index.html.erb FILE</h1>
+
+class PostsController < ApplicationController
+    def index
+    end
+
+    def new
+    end 
+end
+
+Template is missing
+Missing template posts/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in: * "/home/highslater/Programming/TwelveInTwelve/blog/app/views"
+
+<h1>New Posts</h1>
+
+<!-- pe (tab)  ff(tab)[must put in =] ffl(tab) fftf(tab) ffta(tab)  ffs(tab)     -->
+    <%= form_for :post, url: posts_path do |f|  %>
+        <p>
+            <%= f.label :title  %> <br>
+            <%= f.text_field :title %>
+        </p>
+        <p>
+            <%= f.label :body %> <br>
+            <%= f.text_area :body %>
+        </p>
+        <p>
+            <%= f.submit  %>
+        </p>
+<% end %>
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ rails generate model Post title:string body:text
+      invoke  active_record
+      create    db/migrate/20150714180111_create_posts.rb
+      create    app/models/post.rb
+      invoke    test_unit
+      create      test/models/post_test.rb
+      create      test/fixtures/posts.yml
+
+class Post < ActiveRecord::Base
+end
+
+class CreatePosts < ActiveRecord::Migration
+  def change
+    create_table :posts do |t|
+      t.string :title
+      t.text :body
+
+      t.timestamps
+    end
+  end
+end
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ rake db:migrate
+== 20150714180111 CreatePosts: migrating ======================================
+-- create_table(:posts)
+   -> 0.0034s
+== 20150714180111 CreatePosts: migrated (0.0035s) =============================
+
+
+class PostsController < ApplicationController
+
+    def index
+    end
+
+    def new
+    end
+
+    def create
+        # First create the post
+        @post = Post.new(post_params) # post_params defined below
+        # Save the post
+        @post.save
+
+        redirect_to @post
+    end
+
+    private
+        def post_params
+            params.require(:post).permit(:title, :body)
+        end
+
+end
+
+Unknown action
+The action 'show' could not be found for PostsController
+
+<h1 class="title">
+<!--  pe(tab)  -->
+    <%= @post.title %> 
+</h1>
+<p class="date">
+    Submitted <%= time_ago_in_words(@post.created_at) %> Ago
+</p>
+<p class="body">
+    <%= @post.body %>
+</p>
+
+NoMethodError in Posts#show
+
+class PostsController < ApplicationController
+
+    def index
+    end
+
+    def new
+    end
+
+    def create
+        # First create the post
+        @post = Post.new(post_params) # post_params defined below
+        # Save the post
+        @post.save
+
+        redirect_to @post
+    end
+
+    def show
+        @post = Post.find(params[:id])
+    end
+
+    private
+        def post_params
+            params.require(:post).permit(:title, :body)
+        end
+
+end
+
+class PostsController < ApplicationController
+
+    def index
+        @posts = Post.all.order('created_at DESC')
+    end
+
+    def new
+    end
+
+    def create
+        # First create the post
+        @post = Post.new(post_params) # post_params defined below
+        # Save the post
+        @post.save
+
+        redirect_to @post
+    end
+
+    def show
+        @post = Post.find(params[:id])
+    end
+
+    private
+        def post_params
+            params.require(:post).permit(:title, :body)
+        end
+
+end
+
+
+<% @posts.each do |post| %>
+    <div class="post_wrapper">
+        <h2 class="title"><%= link_to post.title, post %></h2>
+        <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+    </div>
+<% end %>
