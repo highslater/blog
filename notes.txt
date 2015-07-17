@@ -349,3 +349,152 @@ end
         <p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
     </div>
 <% end %>
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   config/routes.rb
+    modified:   notes.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    app/assets/javascripts/posts.js.coffee
+    app/assets/stylesheets/posts.css.scss
+    app/controllers/posts_controller.rb
+    app/helpers/posts_helper.rb
+    app/models/post.rb
+    app/views/posts/
+    db/migrate/
+    db/schema.rb
+    test/controllers/posts_controller_test.rb
+    test/fixtures/posts.yml
+    test/helpers/posts_helper_test.rb
+    test/models/post_test.rb
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git add .
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git commit -am "Add posts"
+[master ce7b26d] Add posts
+ 16 files changed, 445 insertions(+), 57 deletions(-)
+ create mode 100644 app/assets/javascripts/posts.js.coffee
+ create mode 100644 app/assets/stylesheets/posts.css.scss
+ create mode 100644 app/controllers/posts_controller.rb
+ create mode 100644 app/helpers/posts_helper.rb
+ create mode 100644 app/models/post.rb
+ create mode 100644 app/views/posts/index.html.erb
+ create mode 100644 app/views/posts/new.html.erb
+ create mode 100644 app/views/posts/show.html.erb
+ rewrite config/routes.rb (97%)
+ create mode 100644 db/migrate/20150714180111_create_posts.rb
+ create mode 100644 db/schema.rb
+ create mode 100644 test/controllers/posts_controller_test.rb
+ create mode 100644 test/fixtures/posts.yml
+ create mode 100644 test/helpers/posts_helper_test.rb
+ create mode 100644 test/models/post_test.rb
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git push
+Counting objects: 50, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (35/35), 6.62 KiB | 0 bytes/s, done.
+Total 35 (delta 4), reused 0 (delta 0)
+To git@github.com:highslater/blog.git
+   cc962b0..ce7b26d  master -> master
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $
+
+highslater@mint64 ~/Programming/TwelveInTwelve/blog $ git checkout -b styling
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div id="sidebar">
+        <div id="logo">
+            <%= link_to root_path do %>
+                <%= image_tag "logo.svg" %>
+            <% end %>
+        </div>
+        <ul>
+            <li class="category">WebSite</li>
+            <li><%= link_to "Blog", root_path %></li>
+            <li>About</li>
+        </ul>
+
+        <ul>
+            <li class="category">Social</li>
+            <li><a href="https://twitter.com/mackenziechild">Twitter</a></li>
+            <li><a href="http://instagram.com/mackenziechild">Instagram</a></li>
+            <li><a href="https://github.com/makenziechild">GitHub</a></li>
+            <li><a href="mailto:hey@mckenziechild.me">Email</a></li>
+        </ul>
+    </div>
+
+<%= yield %>
+
+</body>
+</html>
+
+@import 'normalize'
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div id="sidebar">
+        <div id="logo">
+            <%= link_to root_path do %>
+                <%= image_tag "logo.svg" %>
+            <% end %>
+        </div>
+        <ul>
+            <li class="category">WebSite</li>
+            <li><%= link_to "Blog", root_path %></li>
+            <li>About</li>
+        </ul>
+
+        <ul>
+            <li class="category">Social</li>
+            <li><a href="https://twitter.com/mackenziechild">Twitter</a></li>
+            <li><a href="http://instagram.com/mackenziechild">Instagram</a></li>
+            <li><a href="https://github.com/makenziechild">GitHub</a></li>
+            <li><a href="mailto:hey@mckenziechild.me">Email</a></li>
+        </ul>
+            <p class="sign_in">Admin Login</p>
+    </div>
+    <div id="main_content">
+        <div id="header">
+            <p>All Posts</p>
+            <div class="buttons">
+                <button class="button"><%= link_to "New Post", new_post_path %></button>
+                <button class="button">Log Out</button>
+            </div>
+        </div>
+
+            <% flash.each do |name, msg| %>
+                <%= content_tag(:div, msg, class: "alert") %>
+            <% end %>
+
+        <%= yield %>
+
+    </div>
+</body>
+</html>
